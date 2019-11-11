@@ -107,3 +107,4 @@ C:\Users\Lenovo\VS19Projects\Students\Students\bin\Debug\netcoreapp3.0\Students.
 C:\Users\Lenovo\VS19Projects\Students\Students\bin\Debug\netcoreapp3.0\Students.pdb
 C:\Users\Lenovo\VS19Projects\Students\Students\obj\Debug\netcoreapp3.0\Students.dll
 C:\Users\Lenovo\VS19Projects\Students\Students\obj\Debug\netcoreapp3.0\Students.pdb
+C:\Users\Lenovo\VS19Projects\Students\Students\obj\Debug\netcoreapp3.0\Students.MvcApplicationPartsAssemblyInfo.cache
