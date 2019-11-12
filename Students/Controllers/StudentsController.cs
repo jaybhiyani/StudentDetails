@@ -70,7 +70,7 @@ namespace Students.Controllers
                 }
             }
 
-            return NoContent();
+            return Ok();
         }
 
         // POST: api/Students
