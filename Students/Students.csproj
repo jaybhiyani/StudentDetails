@@ -13,6 +13,12 @@
     <Compile Remove="Migrations\20191116112310_Student updated.Designer.cs" />
     <Compile Remove="Migrations\20191118103437_One to One relationship added.cs" />
     <Compile Remove="Migrations\20191118103437_One to One relationship added.Designer.cs" />
+    <Compile Remove="Migrations\20191118111119_Department Added.cs" />
+    <Compile Remove="Migrations\20191118111119_Department Added.Designer.cs" />
+    <Compile Remove="Migrations\20191118122400_One to One relationship implemented.cs" />
+    <Compile Remove="Migrations\20191118122400_One to One relationship implemented.Designer.cs" />
+    <Compile Remove="Migrations\20191118123816_DId identity removed.cs" />
+    <Compile Remove="Migrations\20191118123816_DId identity removed.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

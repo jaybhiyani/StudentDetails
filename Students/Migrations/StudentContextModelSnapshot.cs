@@ -21,9 +21,7 @@ namespace Students.Migrations
             modelBuilder.Entity("Students.Models.Department", b =>
                 {
                     b.Property<int>("DId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<string>("Dep")
                         .IsRequired()
@@ -48,6 +46,15 @@ namespace Students.Migrations
                     b.HasKey("SId");
 
                     b.ToTable("Students");
+                });
+
+            modelBuilder.Entity("Students.Models.Department", b =>
+                {
+                    b.HasOne("Students.Models.Student", "Student")
+                        .WithOne("Department")
+                        .HasForeignKey("Students.Models.Department", "DId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

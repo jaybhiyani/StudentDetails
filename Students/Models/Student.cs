@@ -19,6 +19,6 @@ namespace Students.Models
         //[Column(TypeName = "varchar(2)")]
         //public string Department { get; set; }
 
-        
+        public Department Department { get; set; }
     }
 }

@@ -10,10 +10,11 @@ namespace Students.Models
     public class Department
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int DId { get; set; }
         [Required]
         [Column(TypeName = "varchar(20)")]
         public string Dep { get; set; }
+
+        public Student Student { get; set; }
     }
 }
