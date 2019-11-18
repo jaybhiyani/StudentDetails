@@ -29,7 +29,7 @@ namespace Students.Controllers
 
         // GET: api/Students/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Student>> GetStudent(string id)
+        public async Task<ActionResult<Student>> GetStudent(int id)
         {
             var student = await _context.Students.FindAsync(id);
 
@@ -45,9 +45,9 @@ namespace Students.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutStudent(string id, Student student)
+        public async Task<IActionResult> PutStudent(int id, Student student)
         {
-            if (id != student.Id)
+            if (id != student.SId)
             {
                 return BadRequest();
             }
@@ -70,7 +70,7 @@ namespace Students.Controllers
                 }
             }
 
-            return Ok();
+            return NoContent();
         }
 
         // POST: api/Students
@@ -80,28 +80,14 @@ namespace Students.Controllers
         public async Task<ActionResult<Student>> PostStudent(Student student)
         {
             _context.Students.Add(student);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (StudentExists(student.Id))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetStudent", new { id = student.Id }, student);
+            return CreatedAtAction("GetStudent", new { id = student.SId }, student);
         }
 
         // DELETE: api/Students/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Student>> DeleteStudent(string id)
+        public async Task<ActionResult<Student>> DeleteStudent(int id)
         {
             var student = await _context.Students.FindAsync(id);
             if (student == null)
@@ -115,9 +101,9 @@ namespace Students.Controllers
             return student;
         }
 
-        private bool StudentExists(string id)
+        private bool StudentExists(int id)
         {
-            return _context.Students.Any(e => e.Id == id);
+            return _context.Students.Any(e => e.SId == id);
         }
     }
 }

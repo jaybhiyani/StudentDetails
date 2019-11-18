@@ -1,0 +1,16 @@
+{
+  "FilePath": "c:\\Users\\Lenovo\\VS19Projects\\Students\\Students\\Students.csproj",
+  "Configuration": {
+    "ConfigurationName": "MVC-3.0",
+    "LanguageVersion": "3.0",
+    "Extensions": [
+      {
+        "ExtensionName": "MVC-3.0"
+      }
+    ]
+  },
+  "ProjectWorkspaceState": null,
+  "RootNamespace": "Students",
+  "Documents": [],
+  "SerializationFormat": "0.2"
+}

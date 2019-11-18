@@ -7,18 +7,13 @@ using System.Threading.Tasks;
 
 namespace Students.Models
 {
-    public class Student
+    public class Department
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int SId { get; set; }
+        public int DId { get; set; }
         [Required]
-        [Column(TypeName ="varchar(50)")]
-        public string Name { get; set; }
-        //[Required]
-        //[Column(TypeName = "varchar(2)")]
-        //public string Department { get; set; }
-
-        
+        [Column(TypeName = "varchar(20)")]
+        public string Dep { get; set; }
     }
 }
