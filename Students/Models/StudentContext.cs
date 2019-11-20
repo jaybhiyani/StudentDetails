@@ -12,17 +12,6 @@ namespace Students.Models
         {
             
         }
-        protected override void OnModelCreating(ModelBuilder builder)
-        {
-            base.OnModelCreating(builder);
-
-            builder.Entity<Student>(entity =>
-            {
-                entity.HasOne(st => st.Department)
-                    .WithOne(dep => dep.Student)
-                    .HasForeignKey<Department>(dep => dep.DId);
-            });
-        }
         public DbSet<Student> Students { get; set; }
         public DbSet<Department> Departments { get; set; }
     }

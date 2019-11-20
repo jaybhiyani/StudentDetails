@@ -24,7 +24,7 @@ namespace Students.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Student>>> GetStudents()
         {
-            return await _context.Students.ToListAsync();
+            return await _context.Students.Include(d => d.Department).ToListAsync();
         }
 
         // GET: api/Students/5

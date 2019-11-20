@@ -15,10 +15,7 @@ namespace Students.Models
         [Required]
         [Column(TypeName ="varchar(50)")]
         public string Name { get; set; }
-        //[Required]
-        //[Column(TypeName = "varchar(2)")]
-        //public string Department { get; set; }
-
+        public int DepartmentId { get; set; }
         public Department Department { get; set; }
     }
 }
