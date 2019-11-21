@@ -31,7 +31,7 @@ namespace Students.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Student>> GetStudent(int id)
         {
-            var student = await _context.Students.FindAsync(id);
+            var student = await _context.Students.Include(d => d.Department).FirstOrDefaultAsync(i => i.SId == id);
 
             if (student == null)
             {
