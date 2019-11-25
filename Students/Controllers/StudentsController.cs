@@ -51,7 +51,8 @@ namespace Students.Controllers
             {
                 return BadRequest();
             }
-
+            _context.Departments.Update(student.Department);
+            await _context.SaveChangesAsync();
             _context.Entry(student).State = EntityState.Modified;
 
             try
@@ -70,7 +71,7 @@ namespace Students.Controllers
                 }
             }
 
-            return NoContent();
+            return Ok();
         }
 
         // POST: api/Students
@@ -79,6 +80,8 @@ namespace Students.Controllers
         [HttpPost]
         public async Task<ActionResult<Student>> PostStudent(Student student)
         {
+            //_context.Departments.Add(student.Department);
+            //await _context.SaveChangesAsync();
             _context.Students.Add(student);
             await _context.SaveChangesAsync();
 
