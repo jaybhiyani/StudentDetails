@@ -88,6 +88,18 @@ namespace Students.Controllers
             return CreatedAtAction("GetStudent", new { id = student.SId }, student);
         }
 
+
+        [HttpPost]
+        [Route("StudentList")]
+        public async Task<ActionResult<Student>> PostStudentList(StudentViewModel studentModel)
+        {
+            var students = new List<Student>();
+            students = studentModel.student;
+            _context.Students.AddRange(students);
+            await _context.SaveChangesAsync();
+            return CreatedAtAction("GetStudents", students);
+        }
+
         // DELETE: api/Students/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<Student>> DeleteStudent(int id)
