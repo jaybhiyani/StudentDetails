@@ -11,11 +11,11 @@ namespace Students.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class StudentsController : ControllerBase
+    public class StudentController : ControllerBase
     {
         private readonly StudentContext _context;
 
-        public StudentsController(StudentContext context)
+        public StudentController(StudentContext context)
         {
             _context = context;
         }
@@ -24,14 +24,14 @@ namespace Students.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Student>>> GetStudents()
         {
-            return await _context.Students.Include(d => d.Department).ToListAsync();
+            return await _context.Students.ToListAsync();
         }
 
         // GET: api/Students/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Student>> GetStudent(int id)
         {
-            var student = await _context.Students.Include(d => d.Department).FirstOrDefaultAsync(i => i.SId == id);
+            var student = await _context.Students.FindAsync(id);
 
             if (student == null)
             {
@@ -51,8 +51,6 @@ namespace Students.Controllers
             {
                 return BadRequest();
             }
-            _context.Departments.Update(student.Department);
-            await _context.SaveChangesAsync();
             _context.Entry(student).State = EntityState.Modified;
 
             try
@@ -80,8 +78,6 @@ namespace Students.Controllers
         [HttpPost]
         public async Task<ActionResult<Student>> PostStudent(Student student)
         {
-            //_context.Departments.Add(student.Department);
-            //await _context.SaveChangesAsync();
             _context.Students.Add(student);
             await _context.SaveChangesAsync();
 
@@ -91,13 +87,21 @@ namespace Students.Controllers
 
         [HttpPost]
         [Route("StudentList")]
-        public async Task<ActionResult<Student>> PostStudentList(StudentViewModel studentModel)
+        public ActionResult<Student> PostStudentList([FromBody] List<Student> student)
         {
-            var students = new List<Student>();
-            students = studentModel.student;
-            _context.Students.AddRange(students);
-            await _context.SaveChangesAsync();
-            return CreatedAtAction("GetStudents", students);
+            try
+            {
+                foreach (Student s in student)
+                {
+                    _context.Students.Add(s);
+                }
+                _context.SaveChanges();
+                return CreatedAtAction("GetStudents", student);
+            }
+            catch
+            {
+                return BadRequest();
+            }
         }
 
         // DELETE: api/Students/5

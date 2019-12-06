@@ -14,5 +14,6 @@ namespace Students.Models
         [Required]
         [Column(TypeName = "varchar(20)")]
         public string Dep { get; set; }
+        public List<Student> Students { get; set; }
     }
 }

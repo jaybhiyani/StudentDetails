@@ -24,14 +24,14 @@ namespace Students.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Department>>> GetDepartments()
         {
-            return await _context.Departments.ToListAsync();
+            return await _context.Departments.Include(s => s.Students).ToListAsync();
         }
 
         // GET: api/Department/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Department>> GetDepartment(int id)
         {
-            var department = await _context.Departments.FindAsync(id);
+            var department = await _context.Departments.Include(s => s.Students).FirstOrDefaultAsync(i => i.Id == id);
 
             if (department == null)
             {
@@ -40,6 +40,27 @@ namespace Students.Controllers
 
             return department;
         }
+
+        // GET: api/Department/5
+        //[HttpGet("{id}/students")]
+        //[Route("DepartmentWithStudents{id:int}")]
+        //public async Task<ActionResult<DepartmentStudentsResponse>> GetStudents(int id)
+        //{
+            
+            //var department =  _context.Departments.Where(x => x.Id == id).FirstOrDefault();
+            //if (department == null)
+            //{
+            //    return NotFound();
+            //}
+            //DepartmentStudentsResponse departmentStudents = new DepartmentStudentsResponse();
+            //departmentStudents.department = department;
+
+            //var listOfStudents = await _context.Students.Where(x => x.DepartmentId == id).ToListAsync();
+            //departmentStudents.students = listOfStudents;
+
+
+            //return departmentStudents;
+        //}
 
         // PUT: api/Department/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for

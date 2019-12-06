@@ -23,6 +23,8 @@
     <Compile Remove="Migrations\20191119133817_PK removed from Department.Designer.cs" />
     <Compile Remove="Migrations\20191120113405_One to One relationship added.cs" />
     <Compile Remove="Migrations\20191120113405_One to One relationship added.Designer.cs" />
+    <Compile Remove="Migrations\20191206060133_One to Many resolved.cs" />
+    <Compile Remove="Migrations\20191206060133_One to Many resolved.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
