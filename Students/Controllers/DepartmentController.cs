@@ -41,27 +41,6 @@ namespace Students.Controllers
             return department;
         }
 
-        // GET: api/Department/5
-        //[HttpGet("{id}/students")]
-        //[Route("DepartmentWithStudents{id:int}")]
-        //public async Task<ActionResult<DepartmentStudentsResponse>> GetStudents(int id)
-        //{
-            
-            //var department =  _context.Departments.Where(x => x.Id == id).FirstOrDefault();
-            //if (department == null)
-            //{
-            //    return NotFound();
-            //}
-            //DepartmentStudentsResponse departmentStudents = new DepartmentStudentsResponse();
-            //departmentStudents.department = department;
-
-            //var listOfStudents = await _context.Students.Where(x => x.DepartmentId == id).ToListAsync();
-            //departmentStudents.students = listOfStudents;
-
-
-            //return departmentStudents;
-        //}
-
         // PUT: api/Department/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
@@ -98,12 +77,21 @@ namespace Students.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
-        public async Task<ActionResult<Department>> PostDepartment(Department department)
+        public IActionResult PostDepartment([FromBody] List<Department> departments)
         {
-            _context.Departments.Add(department);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetDepartment", new { id = department.Id }, department);
+            try
+            {
+                for (var i = 0; i < departments.ToArray().Length; i++)
+                {
+                    _context.Departments.Add(departments[i]);
+                }
+                _context.SaveChanges();
+                return CreatedAtAction("GetDepartments", departments);
+            }
+            catch
+            {
+                return BadRequest();
+            }
         }
 
         // DELETE: api/Department/5
