@@ -72,6 +72,27 @@ namespace Students.Controllers
 
             return Ok();
         }
+        [HttpPut]
+        public IActionResult UpdateDepartmentList(List<Department> departments)
+        {
+            try
+            {
+                foreach (Department department in departments)
+                {
+                    if (!DepartmentExists(department.Id))
+                    {
+                        return NotFound("Department with id: " + department.Id + " not found");  
+                    }
+                    _context.Entry(department).State = EntityState.Modified;
+                    _context.SaveChanges();
+                }
+                return Ok();
+            }
+            catch(DbUpdateConcurrencyException ex)
+            {
+                return BadRequest(ex);
+            }
+        }
 
         // POST: api/Department
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
@@ -81,9 +102,9 @@ namespace Students.Controllers
         {
             try
             {
-                for (var i = 0; i < departments.ToArray().Length; i++)
+                foreach (Department department in departments)
                 {
-                    _context.Departments.Add(departments[i]);
+                    _context.Departments.Add(department);
                 }
                 _context.SaveChanges();
                 return CreatedAtAction("GetDepartments", departments);
