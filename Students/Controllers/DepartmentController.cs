@@ -105,6 +105,7 @@ namespace Students.Controllers
                 foreach (Department department in departments)
                 {
                     _context.Departments.Add(department);
+                    //_context.Students.AddRange(department.Students);
                 }
                 _context.SaveChanges();
                 return CreatedAtAction("GetDepartments", departments);
@@ -130,6 +131,20 @@ namespace Students.Controllers
 
             return department;
         }
+        //[HttpDelete]
+        //public IActionResult DeleteDepartmentList(List<Department> departments)
+        //{
+        //    foreach (Department department in departments)
+        //    {
+        //        if(!DepartmentExists(department.Id))
+        //        {
+        //            return NotFound("Department with id: " + department.Id + " not found");
+        //        }
+        //        _context.Departments.Remove(department);
+        //        _context.SaveChanges();
+        //    }
+        //    return Ok();
+        //}
 
         private bool DepartmentExists(int id)
         {
