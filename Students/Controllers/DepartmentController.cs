@@ -42,21 +42,46 @@ namespace Students.Controllers
         }
 
         [HttpGet("search/{searchString}")]
-        public IActionResult SearchDepartment(string searchString)
+        public IActionResult Search(string searchString)
         {
             var departments = from d in _context.Departments.Include(s => s.Students) select d;
             if (!string.IsNullOrEmpty(searchString))
             {
-                departments = departments.Where(d => d.Dep.Contains(searchString) || d.Students.Any(s => s.Name.Contains(searchString))).OrderBy(d => d.Id);
+                departments = departments.Where(d => d.Dep.Contains(searchString) || d.Students.Any(s => s.Name.Contains(searchString)));
                 //departments = departments.Where(d => d.Dep.Contains(searchString)).OrderBy(d => d.Id);
                 if (!departments.Any())
-                    return NotFound();
+                    return NotFound("No results found");
                 return Ok(value: departments.ToList());
             }
             else
             {
                 return NotFound();
             }
+
+        }
+
+        [HttpGet("sort/{sortOrder}")]
+        public IActionResult Sort(char sortOrder)
+        {
+            var departments = from d in _context.Departments.Include(s => s.Students) select d;
+            switch(sortOrder)
+            {
+                case 'A':
+                    departments = departments.OrderBy(d => d.Id);
+                    break;
+                case 'D':
+                    departments = departments.OrderByDescending(d => d.Id);
+                    break;
+                case 'a':
+                    departments = departments.OrderBy(d => d.Id);
+                    break;
+                case 'd':
+                    departments = departments.OrderByDescending(d => d.Id);
+                    break;
+                default:
+                    return BadRequest("Please provide valid sorting order : (A or a) for Ascending (D or d) for Descending)");
+            }
+            return Ok(departments);
 
         }
 
