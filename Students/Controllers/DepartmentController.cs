@@ -41,6 +41,25 @@ namespace Students.Controllers
             return department;
         }
 
+        [HttpGet("search/{searchString}")]
+        public IActionResult SearchDepartment(string searchString)
+        {
+            var departments = from d in _context.Departments.Include(s => s.Students) select d;
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                departments = departments.Where(d => d.Dep.Contains(searchString) || d.Students.Any(s => s.Name.Contains(searchString))).OrderBy(d => d.Id);
+                //departments = departments.Where(d => d.Dep.Contains(searchString)).OrderBy(d => d.Id);
+                if (!departments.Any())
+                    return NotFound();
+                return Ok(value: departments.ToList());
+            }
+            else
+            {
+                return NotFound();
+            }
+
+        }
+
         // PUT: api/Department/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.

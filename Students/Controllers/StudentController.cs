@@ -40,6 +40,22 @@ namespace Students.Controllers
 
             return student;
         }
+        //[HttpGet("searchstudent/{searchString}")]
+        //public IActionResult SearchStudent(string searchString)
+        //{
+        //    var students = from s in _context.Students
+        //                   select s;
+        //    if (!string.IsNullOrEmpty(searchString))
+        //    {
+        //        students = students.Where(s => s.Name.Contains(searchString)).OrderBy(s => s.SId);
+        //        return Ok(value: students.ToList());
+        //    }
+        //    else
+        //    {
+        //        return NotFound();
+        //    }
+
+        //}
 
         // PUT: api/Students/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
