@@ -21,6 +21,10 @@ namespace Students.Controllers
         }
 
         // GET: api/Students
+        /// <summary>
+        /// Retrieves students from database.
+        /// </summary>
+        /// <returns>Returns list of departments from database.</returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Student>>> GetStudents()
         {
@@ -28,6 +32,11 @@ namespace Students.Controllers
         }
 
         // GET: api/Students/5
+        /// <summary>
+        /// Retrieves student with particular student id from database.
+        /// </summary>
+        /// <param name="id">Value that provides id of a student to be retrieved from database.</param>
+        /// <returns>Returns department with the student id provided as a parameter if exists.</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<Student>> GetStudent(int id)
         {
@@ -40,28 +49,18 @@ namespace Students.Controllers
 
             return student;
         }
-        //[HttpGet("searchstudent/{searchString}")]
-        //public IActionResult SearchStudent(string searchString)
-        //{
-        //    var students = from s in _context.Students
-        //                   select s;
-        //    if (!string.IsNullOrEmpty(searchString))
-        //    {
-        //        students = students.Where(s => s.Name.Contains(searchString)).OrderBy(s => s.SId);
-        //        return Ok(value: students.ToList());
-        //    }
-        //    else
-        //    {
-        //        return NotFound();
-        //    }
 
-        //}
-
+        /// <summary>
+        /// Updates existing student with new values provided.
+        /// </summary>
+        /// <param name="id">Provides id of student to be updated.</param>
+        /// <param name="student">Provides new values to update existing student</param>
+        /// <returns></returns>
         // PUT: api/Students/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutStudent(int id, Student student)
+        public async Task<ActionResult> PutStudent(int id, Student student)
         {
             if (id != student.SId)
             {
@@ -87,7 +86,11 @@ namespace Students.Controllers
 
             return Ok();
         }
-
+        /// <summary>
+        /// Creates new student and stores in database.
+        /// </summary>
+        /// <param name="student">Provides parameter values required for new student.</param>
+        /// <returns>Returns Status Code 201CreatedAtAction with new student and route.</returns>
         // POST: api/Students
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
@@ -100,26 +103,11 @@ namespace Students.Controllers
             return CreatedAtAction("GetStudent", new { id = student.SId }, student);
         }
 
-
-        [HttpPost]
-        [Route("StudentList")]
-        public ActionResult<Student> PostStudentList([FromBody] List<Student> student)
-        {
-            try
-            {
-                foreach (Student s in student)
-                {
-                    _context.Students.Add(s);
-                }
-                _context.SaveChanges();
-                return CreatedAtAction("GetStudents", student);
-            }
-            catch
-            {
-                return BadRequest();
-            }
-        }
-
+        /// <summary>
+        /// Deletes student with id provided as a paramater.
+        /// </summary>
+        /// <param name="id">Provides value of student id of student to be deleted.</param>
+        /// <returns>Returns student that is deleted successfully or Status code 404NotFound if student does not exist.</returns>
         // DELETE: api/Students/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<Student>> DeleteStudent(int id)
@@ -135,7 +123,11 @@ namespace Students.Controllers
 
             return student;
         }
-
+        /// <summary>
+        /// Checks whether student with student id provided is present in database or not.
+        /// </summary>
+        /// <param name="id">Provides student id to be checked for existence.</param>
+        /// <returns>Returns true if student is found else false.</returns>
         private bool StudentExists(int id)
         {
             return _context.Students.Any(e => e.SId == id);

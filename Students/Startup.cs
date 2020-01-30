@@ -26,8 +26,9 @@ namespace Students
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(opt => opt.AddPolicy("_Allowed", builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()));
             services.AddControllers();
-            services.AddDbContext<StudentContext>(options => options.UseSqlServer(Configuration.GetConnectionString("School")));
+            services.AddDbContext<StudentContext>(options => options.UseSqlServer(Configuration.GetConnectionString("College")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,6 +40,8 @@ namespace Students
             }
 
             app.UseRouting();
+
+            app.UseCors("_Allowed");
 
             app.UseAuthorization();
 

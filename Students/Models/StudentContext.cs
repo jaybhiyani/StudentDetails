@@ -12,6 +12,11 @@ namespace Students.Models
         {
             
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Department>()
+                .HasMany<Student>(s => s.Students);
+        }
         public DbSet<Student> Students { get; set; }
         public DbSet<Department> Departments { get; set; }
     }
