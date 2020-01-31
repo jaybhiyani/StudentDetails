@@ -16,6 +16,5 @@ namespace Students.Models
         [Column(TypeName ="varchar(50)")]
         public string Name { get; set; }
         public int DepartmentId { get; set; }
-        //public Department Department { get; set; }
     }
 }

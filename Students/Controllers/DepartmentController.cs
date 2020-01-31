@@ -2,16 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Students.Models;
 
 namespace Students.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class DepartmentController : ControllerBase
+    public class DepartmentController : BaseController
     {
         private readonly StudentContext _context;
 
@@ -20,7 +17,6 @@ namespace Students.Controllers
             _context = context;
         }
 
-        // POST: api/Department/list
         /// <summary>
         /// Retrieves departments from database.
         /// </summary>
@@ -31,7 +27,7 @@ namespace Students.Controllers
         {
             if(!string.IsNullOrEmpty(queryParameters.searchString))
             {
-                return await _context.Departments.Include(s => s.Students).Where(d => d.Dep.Contains(queryParameters.searchString)).ToListAsync();
+                return await _context.Departments.Where(d => d.Dep.Contains(queryParameters.searchString)).Include(s => s.Students).ToListAsync();
             }
             else if(!string.IsNullOrEmpty(queryParameters.sortOrder))
             {
@@ -49,7 +45,6 @@ namespace Students.Controllers
         /// </summary>
         /// <param name="id">Value that provides id of a department to be retrieved from database.</param>
         /// <returns>Returns department with the department id provided as a parameter if exists.</returns>
-        // GET: api/Department/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Department>> GetDepartment(int id)
         {
@@ -68,11 +63,8 @@ namespace Students.Controllers
         /// <param name="id">Provides id of department to be updated</param>
         /// <param name="department">Provides new values to update existing department</param>
         /// <returns>Returns Status Code 200OK if department is updated successfully or Error Codes 400BadReuest and 404NotFound</returns>
-        // PUT: api/Department/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPut("{id}")]
-        public async Task<ActionResult> PutDepartment(int id, Department department)
+        public async Task<IActionResult> PutDepartment(int id, Department department)
         {
             if (id != department.Id)
             {
@@ -100,10 +92,6 @@ namespace Students.Controllers
 
             return Ok();
         }
-
-        // POST: api/Department
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://aka.ms/RazorPagesCRUD.
         /// <summary>
         /// Creates new department and stores in database.
         /// </summary>
@@ -122,7 +110,6 @@ namespace Students.Controllers
         /// </summary>
         /// <param name="id">Provides value of department id of department to be deleted</param>
         /// <returns>Returns department that is deleted successfully or Status code 404NotFound if department does not exist.</returns>
-        // DELETE: api/Department/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<Department>> DeleteDepartment(int id)
         {

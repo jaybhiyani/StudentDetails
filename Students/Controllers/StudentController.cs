@@ -9,9 +9,7 @@ using Students.Models;
 
 namespace Students.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class StudentController : ControllerBase
+    public class StudentController : BaseController
     {
         private readonly StudentContext _context;
 
@@ -19,8 +17,6 @@ namespace Students.Controllers
         {
             _context = context;
         }
-
-        // GET: api/Students
         /// <summary>
         /// Retrieves students from database.
         /// </summary>
@@ -30,8 +26,6 @@ namespace Students.Controllers
         {
             return await _context.Students.ToListAsync();
         }
-
-        // GET: api/Students/5
         /// <summary>
         /// Retrieves student with particular student id from database.
         /// </summary>
@@ -55,12 +49,8 @@ namespace Students.Controllers
         /// </summary>
         /// <param name="id">Provides id of student to be updated.</param>
         /// <param name="student">Provides new values to update existing student</param>
-        /// <returns></returns>
-        // PUT: api/Students/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPut("{id}")]
-        public async Task<ActionResult> PutStudent(int id, Student student)
+        public async Task<IActionResult> PutStudent(int id, Student student)
         {
             if (id != student.SId)
             {
@@ -91,9 +81,6 @@ namespace Students.Controllers
         /// </summary>
         /// <param name="student">Provides parameter values required for new student.</param>
         /// <returns>Returns Status Code 201CreatedAtAction with new student and route.</returns>
-        // POST: api/Students
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
         public async Task<ActionResult<Student>> PostStudent(Student student)
         {
@@ -108,7 +95,6 @@ namespace Students.Controllers
         /// </summary>
         /// <param name="id">Provides value of student id of student to be deleted.</param>
         /// <returns>Returns student that is deleted successfully or Status code 404NotFound if student does not exist.</returns>
-        // DELETE: api/Students/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<Student>> DeleteStudent(int id)
         {
