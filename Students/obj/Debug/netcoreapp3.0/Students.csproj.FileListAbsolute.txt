@@ -213,10 +213,12 @@ C:\Project\StudentDetails\Students\bin\Debug\netcoreapp3.0\runtimes\win\lib\nets
 C:\Project\StudentDetails\Students\obj\Debug\netcoreapp3.0\Students.csprojAssemblyReference.cache
 C:\Project\StudentDetails\Students\obj\Debug\netcoreapp3.0\staticwebassets\Students.StaticWebAssets.Manifest.cache
 C:\Project\StudentDetails\Students\obj\Debug\netcoreapp3.0\staticwebassets\Students.StaticWebAssets.xml
-C:\Project\StudentDetails\Students\obj\Debug\netcoreapp3.0\Students.MvcApplicationPartsAssemblyInfo.cache
 C:\Project\StudentDetails\Students\obj\Debug\netcoreapp3.0\Students.AssemblyInfoInputs.cache
 C:\Project\StudentDetails\Students\obj\Debug\netcoreapp3.0\Students.AssemblyInfo.cs
 C:\Project\StudentDetails\Students\obj\Debug\netcoreapp3.0\Students.RazorTargetAssemblyInfo.cache
 C:\Project\StudentDetails\Students\obj\Debug\netcoreapp3.0\Students.csproj.CopyComplete
 C:\Project\StudentDetails\Students\obj\Debug\netcoreapp3.0\Students.dll
 C:\Project\StudentDetails\Students\obj\Debug\netcoreapp3.0\Students.pdb
+C:\Project\StudentDetails\Students\obj\Debug\netcoreapp3.0\Students.MvcApplicationPartsAssemblyInfo.cache
+C:\Project\StudentDetails\Students\bin\Debug\netcoreapp3.0\AutoMapper.dll
+C:\Project\StudentDetails\Students\bin\Debug\netcoreapp3.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

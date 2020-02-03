@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Students.Models;
+using AutoMapper;
+using Students.Interfaces;
 
 namespace Students
 {
@@ -29,6 +31,9 @@ namespace Students
             services.AddCors(opt => opt.AddPolicy("Allow_CORS", builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()));
             services.AddControllers();
             services.AddDbContext<StudentContext>(options => options.UseSqlServer(Configuration.GetConnectionString("College")));
+            services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+            //services.AddScoped<IStudentRepository, StudentRepository>();
+            services.AddAutoMapper(typeof(Startup));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
