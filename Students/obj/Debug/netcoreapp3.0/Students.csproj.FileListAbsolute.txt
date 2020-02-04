@@ -222,3 +222,5 @@ C:\Project\StudentDetails\Students\obj\Debug\netcoreapp3.0\Students.pdb
 C:\Project\StudentDetails\Students\obj\Debug\netcoreapp3.0\Students.MvcApplicationPartsAssemblyInfo.cache
 C:\Project\StudentDetails\Students\bin\Debug\netcoreapp3.0\AutoMapper.dll
 C:\Project\StudentDetails\Students\bin\Debug\netcoreapp3.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Project\StudentDetails\Students\bin\Debug\netcoreapp3.0\Students.DAL.dll
+C:\Project\StudentDetails\Students\bin\Debug\netcoreapp3.0\Students.DAL.pdb

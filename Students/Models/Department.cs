@@ -1,12 +1,11 @@
-﻿using Students.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Students.Classes
+namespace Students.Models
 {
-    public class DepartmentView
+    public class Department
     {
         public int Id { get; set; }
         public string Dep { get; set; }

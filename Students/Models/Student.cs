@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Students.Classes
+namespace Students.Models
 {
-    public class StudentView
+    public class Student
     {
         public int SId { get; set; }
         public string Name { get; set; }

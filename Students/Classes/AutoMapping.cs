@@ -12,8 +12,8 @@ namespace Students.Classes
     {
         public AutoMapping()
         {
-            CreateMap<Department, DepartmentView>();
-            CreateMap<Student, StudentView>();
+            CreateMap<Students.DAL.Entities.Department, Students.Models.Department> ();
+            CreateMap<Students.DAL.Entities.Student, Students.Models.Student>();
         }
     }
 }

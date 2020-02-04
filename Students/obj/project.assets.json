@@ -2551,9 +2551,10 @@
       },
       "Students.DAL/1.0.0": {
         "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
+        "framework": ".NETCoreApp,Version=v3.0",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore": "3.1.1"
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "7.0.0",
+          "Microsoft.EntityFrameworkCore": "3.0.0"
         },
         "compile": {
           "bin/placeholder/Students.DAL.dll": {}
@@ -8291,16 +8292,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1605",
-      "level": "Error",
-      "message": "Detected package downgrade: Microsoft.EntityFrameworkCore from 3.1.1 to 3.0.0. Reference the package directly from the project to select a different version. \r\n Students -> Students.DAL -> Microsoft.EntityFrameworkCore (>= 3.1.1) \r\n Students -> Microsoft.EntityFrameworkCore (>= 3.0.0)",
-      "libraryId": "Microsoft.EntityFrameworkCore",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v3.0"
-      ]
-    }
-  ]
+  }
 }

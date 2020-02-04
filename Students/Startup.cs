@@ -11,8 +11,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Students.Models;
+using Students.DAL.Entities;
 using AutoMapper;
 using Students.Interfaces;
+using Students.Repositories;
+using Students.Classes;
 
 namespace Students
 {
@@ -32,8 +35,11 @@ namespace Students
             services.AddControllers();
             services.AddDbContext<StudentContext>(options => options.UseSqlServer(Configuration.GetConnectionString("College")));
             services.AddScoped<IDepartmentRepository, DepartmentRepository>();
-            //services.AddScoped<IStudentRepository, StudentRepository>();
-            services.AddAutoMapper(typeof(Startup));
+            services.AddScoped<IDepartmentRepository, TestRepositories>();
+            services.AddScoped<IStudentRepository, StudentRepository>();
+            services.AddScoped<DAL.Interfaces.IDepartmentRepository, DAL.Repositories.DepartmentRepository>();
+            services.AddScoped<DAL.Interfaces.IStudentRepository, DAL.Repositories.StudentRepository>();
+            services.AddAutoMapper(typeof(AutoMapping));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

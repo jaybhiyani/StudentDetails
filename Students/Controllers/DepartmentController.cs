@@ -5,14 +5,14 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Students.Interfaces;
-using Students.DAL.Entities;
+using Students.Models;
+using Students.Repositories;
 
 namespace Students.Controllers
 {
     public class DepartmentController : BaseController
-    {
-        private readonly StudentContext _context;
-        private readonly IDepartmentRepository _departmentRepository;
+    {       
+       private readonly IDepartmentRepository _departmentRepository;
 
         public DepartmentController(IDepartmentRepository departmentRepository)
         {
@@ -141,9 +141,9 @@ namespace Students.Controllers
         /// </summary>
         /// <param name="id">Provides department id to be checked for existence.</param>
         /// <returns>Returns true if department is found else false.</returns>
-        private bool DepartmentExists(int id)
-        {
-            return _context.Departments.Any(e => e.Id == id);
-        }
+        //private bool DepartmentExists(int id)
+        //{
+        //    return _context.Departments.Any(e => e.Id == id);
+        //}
     }
 }
