@@ -2549,6 +2549,20 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
+      "Students.BLL/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.0",
+        "dependencies": {
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "7.0.0",
+          "Students.DAL": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Students.BLL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Students.BLL.dll": {}
+        }
+      },
       "Students.DAL/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.0",
@@ -8163,6 +8177,11 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
+    "Students.BLL/1.0.0": {
+      "type": "project",
+      "path": "../BLL/Students.BLL/Students.BLL.csproj",
+      "msbuildProject": "../BLL/Students.BLL/Students.BLL.csproj"
+    },
     "Students.DAL/1.0.0": {
       "type": "project",
       "path": "../DAL/Students.DAL/Students.DAL.csproj",
@@ -8178,6 +8197,7 @@
       "Microsoft.EntityFrameworkCore.Tools >= 3.0.0",
       "Microsoft.Extensions.Logging.Debug >= 3.0.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.0.0",
+      "Students.BLL >= 1.0.0",
       "Students.DAL >= 1.0.0"
     ]
   },
@@ -8207,6 +8227,9 @@
       "frameworks": {
         "netcoreapp3.0": {
           "projectReferences": {
+            "C:\\Project\\StudentDetails\\BLL\\Students.BLL\\Students.BLL.csproj": {
+              "projectPath": "C:\\Project\\StudentDetails\\BLL\\Students.BLL\\Students.BLL.csproj"
+            },
             "C:\\Project\\StudentDetails\\DAL\\Students.DAL\\Students.DAL.csproj": {
               "projectPath": "C:\\Project\\StudentDetails\\DAL\\Students.DAL\\Students.DAL.csproj"
             }

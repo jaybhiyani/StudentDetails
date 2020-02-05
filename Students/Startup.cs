@@ -16,6 +16,8 @@ using AutoMapper;
 using Students.Interfaces;
 using Students.Repositories;
 using Students.Classes;
+using Students.BLL.Interfaces;
+using Students.BLL.Repositories;
 
 namespace Students
 {
@@ -35,10 +37,12 @@ namespace Students
             services.AddControllers();
             services.AddDbContext<StudentContext>(options => options.UseSqlServer(Configuration.GetConnectionString("College")));
             services.AddScoped<IDepartmentRepository, DepartmentRepository>();
-            services.AddScoped<IDepartmentRepository, TestRepositories>();
+            //services.AddScoped<IDepartmentRepository, TestRepositories>();
             services.AddScoped<IStudentRepository, StudentRepository>();
             services.AddScoped<DAL.Interfaces.IDepartmentRepository, DAL.Repositories.DepartmentRepository>();
             services.AddScoped<DAL.Interfaces.IStudentRepository, DAL.Repositories.StudentRepository>();
+            services.AddScoped<IDepartmentRepositoryBLL, DepartmentRepositoryBLL>();
+            services.AddScoped<IStudentRepositoryBLL, StudentRepositoryBLL>();
             services.AddAutoMapper(typeof(AutoMapping));
         }
 

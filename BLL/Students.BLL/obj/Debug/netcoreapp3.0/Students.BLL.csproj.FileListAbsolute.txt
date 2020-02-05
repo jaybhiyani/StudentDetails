@@ -1,0 +1,8 @@
+C:\Project\StudentDetails\BLL\Students.BLL\bin\Debug\netcoreapp3.0\Students.BLL.deps.json
+C:\Project\StudentDetails\BLL\Students.BLL\bin\Debug\netcoreapp3.0\Students.BLL.dll
+C:\Project\StudentDetails\BLL\Students.BLL\bin\Debug\netcoreapp3.0\Students.DAL.dll
+C:\Project\StudentDetails\BLL\Students.BLL\bin\Debug\netcoreapp3.0\Students.DAL.pdb
+C:\Project\StudentDetails\BLL\Students.BLL\obj\Debug\netcoreapp3.0\Students.BLL.csprojAssemblyReference.cache
+C:\Project\StudentDetails\BLL\Students.BLL\obj\Debug\netcoreapp3.0\Students.BLL.AssemblyInfoInputs.cache
+C:\Project\StudentDetails\BLL\Students.BLL\obj\Debug\netcoreapp3.0\Students.BLL.AssemblyInfo.cs
+C:\Project\StudentDetails\BLL\Students.BLL\obj\Debug\netcoreapp3.0\Students.BLL.csproj.CopyComplete

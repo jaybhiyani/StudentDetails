@@ -41,6 +41,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BLL\Students.BLL\Students.BLL.csproj" />
     <ProjectReference Include="..\DAL\Students.DAL\Students.DAL.csproj" />
   </ItemGroup>
 
